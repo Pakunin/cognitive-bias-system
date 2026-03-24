@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual env
+.venv/
+
+# Database
+data/*.sqlite
+data/*.db
+
+# Environment config
+.env
+
+# VSCode
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
