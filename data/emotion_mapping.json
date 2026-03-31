@@ -1,0 +1,9 @@
+{
+    "anger":   { "plutchik": "anger",    "valence": "negative", "energy": "high" },
+    "disgust": { "plutchik": "disgust",  "valence": "negative", "energy": "medium" },
+    "fear":    { "plutchik": "fear",     "valence": "negative", "energy": "high" },
+    "joy":     { "plutchik": "joy",      "valence": "positive", "energy": "high" },
+    "neutral": { "plutchik": "neutral",  "valence": "neutral",  "energy": "low" },
+    "sadness": { "plutchik": "sadness",  "valence": "negative", "energy": "low" },
+    "surprise":{ "plutchik": "surprise", "valence": "neutral",  "energy": "high" }
+}
