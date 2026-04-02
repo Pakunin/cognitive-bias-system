@@ -1,0 +1,52 @@
+{
+  "recommendations": [
+    {
+      "id": "rec_001",
+      "title": "Consider the Opposite",
+      "description": "Deliberately argue the opposite of your current belief to expose blind spots.",
+      "technique": "Counter-factual thinking",
+      "target_biases": ["confirmation bias", "general"],
+      "suitable_emotions": ["anger", "disgust", "anticipation"],
+      "suitable_risk_levels": ["low", "medium", "high"],
+      "action_steps": [
+        "Write down your current belief.",
+        "List 3 strong reasons it could be completely wrong.",
+        "Talk to someone who holds the opposite view."
+      ],
+      "estimated_time_minutes": 10,
+      "difficulty": "medium"
+    },
+    {
+      "id": "rec_002",
+      "title": "Pause and Reflect",
+      "description": "Slow down before deciding. Ask: What am I assuming? What am I ignoring?",
+      "technique": "Cognitive pause",
+      "target_biases": ["general", "recency bias", "availability heuristic"],
+      "suitable_emotions": ["fear", "surprise", "sadness"],
+      "suitable_risk_levels": ["low", "medium"],
+      "action_steps": [
+        "Stop and take 3 deep breaths.",
+        "Write down your assumption.",
+        "Ask a trusted person for their take."
+      ],
+      "estimated_time_minutes": 5,
+      "difficulty": "easy"
+    },
+    {
+      "id": "rec_003",
+      "title": "Seek Disconfirming Evidence",
+      "description": "Actively search for information that contradicts your current view.",
+      "technique": "Disconfirmation strategy",
+      "target_biases": ["confirmation bias", "dunning-kruger effect"],
+      "suitable_emotions": ["trust", "joy", "anticipation"],
+      "suitable_risk_levels": ["medium", "high"],
+      "action_steps": [
+        "State what would prove you wrong.",
+        "Search specifically for that evidence.",
+        "Update your belief based on what you find."
+      ],
+      "estimated_time_minutes": 15,
+      "difficulty": "hard"
+    }
+  ]
+}
