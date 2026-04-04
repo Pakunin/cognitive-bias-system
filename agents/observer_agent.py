@@ -122,12 +122,22 @@ class ObserverAgent:
         return self.build_state(user_input)
 
 
-# Testing
-if __name__ == "__main__":
-    agent = ObserverAgent()
+# # Testing
+# if __name__ == "__main__":
+#     agent = ObserverAgent()
 
-    test_input = "I'm really stressed about my exams and don't know what to do"
-    result = agent.process(test_input)
+#     test_input = "I'm really stressed about my exams and don't know what to do"
+#     result = agent.process(test_input)
 
-    from pprint import pprint
-    pprint(result)
+#     from pprint import pprint
+#     pprint(result)
+@staticmethod
+def run(self, ctx):
+    state = self.process(ctx.raw_input)
+
+    ctx.cleaned_text = state["clean_text"]
+    ctx.keywords = state["keywords"]
+    ctx.context_type = state["contexts"][0] if state["contexts"] else "general"
+    ctx.intent = state["intent"]
+    ctx.emotion_hints = state["emotion_hints"]
+    ctx.observer_confidence = state["confidence_score"]

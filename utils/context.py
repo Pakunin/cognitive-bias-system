@@ -11,6 +11,9 @@ class PipelineContext:
     cleaned_text: str = ""
     keywords: list = field(default_factory=list)
     context_type: str = "general"          # general | journal | distress
+    intent: str = "mixed"
+    emotion_hints: list = field(default_factory=list)
+    observer_confidence: float = 0.0
 
     # emotion agent writes these
     primary_emotion: str = ""
