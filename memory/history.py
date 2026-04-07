@@ -30,20 +30,23 @@ def log_emotion(ctx):
     conn.commit()
     conn.close()
 
-def log_recommendation(ctx, item):
+def log_recommendation(ctx):
+    if not ctx.recommendations:
+        return
     conn = get_connection()
-    conn.execute("""
-        INSERT INTO recommendations
-        (session_id, primary_emotion, intervention_type, 
-         item_id, item_type, item_title)
-        VALUES (?, ?, ?, ?, ?, ?)
-    """, (
-        ctx.session_id,
-        ctx.primary_emotion,
-        ctx.intervention_type,
-        item["id"],
-        item["type"],
-        item["title"]
+    for item in ctx.recommendations:
+        conn.execute("""
+            INSERT INTO recommendations
+            (session_id, primary_emotion, intervention_type, 
+            item_id, item_type, item_title)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (
+            ctx.session_id,
+            ctx.primary_emotion,
+            ctx.intervention_type,
+            item.get("id") or item.get("title", "unknown"),
+            item.get("type", "unknown"),
+            item.get("title", "unknown")
     ))
     conn.commit()
     conn.close()
