@@ -1,16 +1,10 @@
 from memory.db import get_connection
-
+from utils.context import PipelineContext
 
 class LearningAgent:
 
-    def run(self, ctx):
-        """
-        Reads:
-            ctx.primary_emotion
-            ctx.recommendations
-            ctx.effectiveness_score
-        """
-
+    @staticmethod
+    def run(ctx: PipelineContext):
         if not hasattr(ctx, "effectiveness_score"):
             return ctx
 
@@ -20,7 +14,7 @@ class LearningAgent:
         rec = ctx.recommendations[0]
 
         emotion = ctx.primary_emotion
-        item_type = rec.get("id")  # IMPORTANT: should match the db
+        item_type = rec.get("type", "unknown")  # IMPORTANT: should match the db
         score = ctx.effectiveness_score * 5  # convert to 1–5 scale
 
         conn = get_connection()
@@ -53,5 +47,3 @@ class LearningAgent:
 
         conn.commit()
         conn.close()
-
-        return ctx
