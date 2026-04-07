@@ -7,13 +7,14 @@ This agent:
 - Detects intent
 - Classifies context
 - Extracts emotion hints
-- Builds structured state for downstream agents
-"""
+- Builds structured state for downstream agents"""
+
 
 import re
 from collections import Counter
+from utils.context import PipelineContext
 
-# Optional: basic stopwords list (kept lightweight)
+# basic stopwords list (kept lightweight)
 STOPWORDS = {
     "i", "am", "is", "are", "was", "were", "the", "a", "an", "and",
     "or", "but", "to", "of", "in", "on", "for", "with", "about",
@@ -22,31 +23,31 @@ STOPWORDS = {
 
 
 class ObserverAgent:
-    def __init__(self):
-        # Context keyword mapping
-        self.context_keywords = {
-            "academic": ["exam", "study", "college", "assignment", "marks", "grade"],
-            "personal": ["family", "friend", "relationship", "life", "home"],
-            "financial": ["money", "loan", "salary", "expense", "debt"],
-            "health": ["health", "sleep", "tired", "stress", "anxiety"],
-            "career": ["job", "internship", "career", "interview", "resume"]
-        }
+    CONTEXT_KEYWORDS = {
+        "academic": ["exam", "study", "college", "assignment", "marks", "grade"],
+        "personal": ["family", "friend", "relationship", "life", "home"],
+        "financial": ["money", "loan", "salary", "expense", "debt"],
+        "health": ["health", "sleep", "tired", "stress", "anxiety"],
+        "career": ["job", "internship", "career", "interview", "resume"]
+    }
 
         # Emotion hint keywords
-        self.emotion_keywords = [
-            "stress", "anxiety", "confused", "happy", "sad",
-            "angry", "overwhelmed", "excited", "worried"
-        ]
+    EMOTION_KEYWORDS = [
+        "stress", "anxiety", "confused", "happy", "sad",
+        "angry", "overwhelmed", "excited", "worried"
+    ]
 
     # 1. Preprocess Input
-    def preprocess_input(self, text: str) -> str:
+    @staticmethod
+    def preprocess_input(text: str) -> str:
         text = text.lower()
         text = re.sub(r"[^a-zA-Z\s]", "", text)  # remove punctuation
         text = re.sub(r"\s+", " ", text).strip()
         return text
 
     # 2. Keyword Extraction
-    def extract_keywords(self, text: str):
+    @staticmethod
+    def extract_keywords(text: str):
         words = text.split()
         filtered = [w for w in words if w not in STOPWORDS]
         freq = Counter(filtered)
@@ -54,7 +55,8 @@ class ObserverAgent:
         return keywords
 
     # 3. Intent Detection
-    def detect_intent(self, text: str) -> str:
+    @staticmethod
+    def detect_intent(text: str) -> str:
         if "?" in text:
             return "question"
 
@@ -69,22 +71,25 @@ class ObserverAgent:
             return "mixed"
 
     # 4. Context Classification
-    def classify_context(self, text: str):
+    @staticmethod
+    def classify_context(text: str):
         contexts = []
 
-        for context, keywords in self.context_keywords.items():
+        for context, keywords in ObserverAgent.CONTEXT_KEYWORDS.items():
             if any(word in text for word in keywords):
                 contexts.append(context)
 
         return contexts if contexts else ["general"]
 
     # 5. Emotion Hint Extraction
-    def extract_emotion_hints(self, text: str):
-        hints = [word for word in self.emotion_keywords if word in text]
+    @staticmethod
+    def extract_emotion_hints(text: str):
+        hints = [word for word in ObserverAgent.EMOTION_KEYWORDS if word in text]
         return hints
 
     # 6. Confidence Score
-    def calculate_confidence(self, keywords, contexts, intent):
+    @staticmethod
+    def calculate_confidence(keywords, contexts, intent):
         score = 0.0
 
         # keyword clarity
@@ -100,13 +105,14 @@ class ObserverAgent:
         return round(score, 2)
 
     # 7. Build State
-    def build_state(self, text: str):
-        clean_text = self.preprocess_input(text)
-        keywords = self.extract_keywords(clean_text)
-        intent = self.detect_intent(text)  # keep original for '?' detection
-        contexts = self.classify_context(clean_text)
-        emotion_hints = self.extract_emotion_hints(clean_text)
-        confidence = self.calculate_confidence(keywords, contexts, intent)
+    @staticmethod
+    def build_state(text: str):
+        clean_text = ObserverAgent.preprocess_input(text)
+        keywords = ObserverAgent.extract_keywords(clean_text)
+        intent = ObserverAgent.detect_intent(text)  # keep original for '?' detection
+        contexts = ObserverAgent.classify_context(clean_text)
+        emotion_hints = ObserverAgent.extract_emotion_hints(clean_text)
+        confidence = ObserverAgent.calculate_confidence(keywords, contexts, intent)
 
         return {
             "clean_text": clean_text,
@@ -118,8 +124,9 @@ class ObserverAgent:
         }
 
     # Main Public Method
-    def process(self, user_input: str) -> dict:
-        return self.build_state(user_input)
+    @staticmethod
+    def process(user_input: str) -> dict:
+        return ObserverAgent.build_state(user_input)
 
 
 # # Testing
@@ -131,13 +138,13 @@ class ObserverAgent:
 
 #     from pprint import pprint
 #     pprint(result)
-@staticmethod
-def run(self, ctx):
-    state = self.process(ctx.raw_input)
+    @staticmethod
+    def run(ctx: PipelineContext):
+        state = ObserverAgent.process(ctx.raw_input)
 
-    ctx.cleaned_text = state["clean_text"]
-    ctx.keywords = state["keywords"]
-    ctx.context_type = state["contexts"][0] if state["contexts"] else "general"
-    ctx.intent = state["intent"]
-    ctx.emotion_hints = state["emotion_hints"]
-    ctx.observer_confidence = state["confidence_score"]
+        ctx.cleaned_text = state["clean_text"]
+        ctx.keywords = state["keywords"]
+        ctx.context_type = state["contexts"][0] if state["contexts"] else "general"
+        ctx.intent = state["intent"]
+        ctx.emotion_hints = state["emotion_hints"]
+        ctx.observer_confidence = state["confidence_score"]
