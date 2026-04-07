@@ -3,10 +3,21 @@ from models.safety_model import score
 from utils.context import PipelineContext
 
 HIGH_RISK_KEYWORDS = [
-    "kill myself", "want to die", "end my life", "suicide",
+    "kill myself", "want to die", "end my life", "suicide", "suicidal"
     "can't go on", "no reason to live", "better off dead",
     "want to disappear", "end it all", "harm myself",
     "self harm", "cut myself", "don't want to exist"
+]
+
+HIGH_RISK_PATTERNS = [
+    r"end(ing)?\s+(my|this)\s+life",
+    r"kill(ing)?\s+my(self)?",
+    r"take\s+my\s+(own\s+)?life",
+    r"(want|thinking)\s+(to|about)\s+(die|dying|suicide|ending)",
+    r"(no|don'?t)\s+(want|reason)\s+to\s+(live|exist|be here)",
+    r"better\s+off\s+(dead|gone|without me)",
+    r"(harm|hurt)\s+my(self)?",
+    r"wish\s+i\s+(was|were)\s+dead",
 ]
 
 MEDIUM_RISK_KEYWORDS = [
@@ -14,6 +25,15 @@ MEDIUM_RISK_KEYWORDS = [
     "can't cope", "falling apart", "breaking down", "give up",
     "what's the point", "nothing matters", "exhausted",
     "can't take it anymore", "feel empty", "numb"
+]
+
+MEDIUM_RISK_PATTERNS = [
+    r"(feel|feeling)\s+(hopeless|worthless|empty|numb)",
+    r"can'?t\s+(cope|go on|take it|bear it)",
+    r"(give|giving)\s+up",
+    r"(no|nothing)\s+(point|matters|left)",
+    r"(falling|breaking)\s+(apart|down)",
+    r"(all\s+)?alone",
 ]
 
 TOXIC_THRESHOLD = 0.80
@@ -26,16 +46,26 @@ class SafetyAgent:
         for phrase in HIGH_RISK_KEYWORDS:
             if phrase in text:
                 triggered.append(phrase)
+        
+        for pattern in HIGH_RISK_PATTERNS:
+            match = re.search(pattern, text)
+            if match:
+                triggered.append(match.group())
 
         if triggered:
-            return "high", triggered
+            return "high", list(set(triggered))
         
         for phrase in MEDIUM_RISK_KEYWORDS:
             if phrase in text:
                 triggered.append(phrase)
 
+        for pattern in MEDIUM_RISK_PATTERNS:
+            match = re.search(pattern, text)
+            if match: 
+                triggered.append(match.group())
+
         if triggered:
-            return "medium", triggered
+            return "medium", list(set(triggered))
         
         return "low", []
     
