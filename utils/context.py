@@ -39,3 +39,4 @@ class PipelineContext:
 
     # feedback agent writes this
     feedback_score: Optional[int] = None
+    effectiveness_score: float = 0.0
