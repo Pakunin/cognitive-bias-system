@@ -3,7 +3,7 @@ from models.safety_model import score
 from utils.context import PipelineContext
 
 HIGH_RISK_KEYWORDS = [
-    "kill myself", "want to die", "end my life", "suicide", "suicidal"
+    "kill myself", "want to die", "end my life", "suicide", "suicidal",
     "can't go on", "no reason to live", "better off dead",
     "want to disappear", "end it all", "harm myself",
     "self harm", "cut myself", "don't want to exist"
