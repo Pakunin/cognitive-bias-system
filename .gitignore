@@ -19,3 +19,5 @@ data/*.db
 # OS junk
 .DS_Store
 Thumbs.db
+
+.cache
