@@ -39,3 +39,26 @@ CREATE TABLE IF NOT EXISTS learning_weights (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(primary_emotion, item_type)
 );
+
+CREATE TABLE IF NOT EXISTS user_preferences (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    music_genres TEXT,           
+    video_topics TEXT,           
+    avoid_topics TEXT,           
+    content_language TEXT,       
+    intervention_horizon TEXT,   
+    energy_preference TEXT,      
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS query_learning (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    emotion TEXT NOT NULL,
+    media_type TEXT NOT NULL,
+    query_terms TEXT,            
+    feedback_score INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
