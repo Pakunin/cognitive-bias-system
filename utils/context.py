@@ -40,3 +40,7 @@ class PipelineContext:
     # feedback agent writes this
     feedback_score: Optional[int] = None
     effectiveness_score: float = 0.0
+    
+    user_prefs: dict = field(default_factory=dict)
+    last_video_query_terms: list = field(default_factory=list)
+    last_music_query_terms: list = field(default_factory=list)
