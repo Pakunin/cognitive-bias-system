@@ -64,41 +64,51 @@ def update_feedback(session_id: str, item_id: str, score: int):
 def get_user_history(session_id: str) -> list:
     conn = get_connection()
     rows = conn.execute("""
-        SELECT primary_emotion, item_id, item_type, feedback_score
+        SELECT 
+            primary_emotion,
+            item_type,
+            item_title,
+            feedback_score,
+            MAX(created_at) as created_at
         FROM recommendations
         WHERE session_id = ?
+        GROUP BY session_id, primary_emotion
         ORDER BY created_at DESC
         LIMIT 20
     """, (session_id,)).fetchall()
     conn.close()
     return [dict(row) for row in rows]
 
+
 def save_user_preferences(user_id: str, prefs: dict):
     import json
     conn = get_connection()
     conn.execute("""
         INSERT INTO user_preferences 
-        (user_id, music_genres, video_topics, 
-        avoid_topics, content_language, 
-        intervention_horizon, energy_preference)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        (user_id, music_genres, video_topics, avoid_topics, preferred_content,
+         content_language, intervention_horizon, energy_preference, age_group, gender)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(user_id) DO UPDATE SET
             music_genres=excluded.music_genres,
             video_topics=excluded.video_topics,
             avoid_topics=excluded.avoid_topics,
-            content_language=excluded.content_language,
+            preferred_content=excluded.preferred_content,
             intervention_horizon=excluded.intervention_horizon,
-            energy_preference=excluded.energy_preference
-            
-        """, (
-            user_id,
-            json.dumps(prefs.get("music_genres", [])),
-            json.dumps(prefs.get("video_topics", [])),
-            json.dumps(prefs.get("avoid_topics", [])),
-            prefs.get("content_language", "english"),
-            prefs.get("intervention_horizon", "short_term"),
-            prefs.get("energy_preference", "any")
-        ))
+            age_group=excluded.age_group,
+            gender=excluded.gender,
+            updated_at=CURRENT_TIMESTAMP
+    """, (
+        user_id,
+        json.dumps(prefs.get("music_genres", [])),
+        json.dumps(prefs.get("video_topics", [])),
+        json.dumps(prefs.get("avoid_topics", [])),
+        json.dumps(prefs.get("preferred_content", [])),
+        prefs.get("content_language", "english"),
+        prefs.get("intervention_horizon", "short_term"),
+        prefs.get("energy_preference", "any"),
+        prefs.get("age_group", ""),
+        prefs.get("gender", ""),
+    ))
     conn.commit()
     conn.close()
     
