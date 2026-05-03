@@ -140,7 +140,7 @@ export default function OnboardingPage() {
       <div className="fixed bottom-[-10%] left-[-5%] w-[30vw] h-[30vw] bg-[#904900]/5 blur-[100px] rounded-full -z-10" />
 
       <nav className="sticky top-0 z-50 shadow-[0_8px_24px_rgba(70,72,212,0.06)] glass-nav flex justify-between items-center w-full px-12 py-4" style={{ background: 'rgba(247,249,251,0.7)' }}>
-        <div className="text-2xl font-bold tracking-tighter text-[#2f2ebe] font-headline">MindMatch</div>
+        <div className="text-2xl font-bold tracking-tighter text-[#2f2ebe] font-headline">EARS</div>
         <div className="hidden md:flex gap-8 items-center">
           <span className="font-headline tracking-tight text-[#191c1e] opacity-70">Step {step + 1} of {STEPS.length}</span>
           <button onClick={() => router.push('/')} className="text-[#191c1e] opacity-70 hover:opacity-100 transition-opacity font-headline tracking-tight">Logout</button>
@@ -246,7 +246,7 @@ export default function OnboardingPage() {
 
       <footer className="w-full bg-[#f7f9fb] border-t border-[#c7c4d7]/15 mt-auto">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-7xl mx-auto">
-          <p className="text-[#191c1e]/60 text-sm tracking-wide order-2 md:order-1 mt-6 md:mt-0">© 2024 MindMatch Digital Sanctuary</p>
+          <p className="text-[#191c1e]/60 text-sm tracking-wide order-2 md:order-1 mt-6 md:mt-0">© 2026 Emotion Aware Recommendation System</p>
           <div className="order-1 md:order-2 flex gap-6 items-center">
             <button onClick={() => router.push('/dashboard')}
               className="text-[#464554] hover:text-[#4648d4] transition-colors font-medium text-sm">
