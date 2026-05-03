@@ -84,11 +84,11 @@ export default function LoginPage() {
               {modal === 'terms' ? (
                 <>
                   <p className="font-semibold text-[#191c1e]">Last updated: 2026</p>
-                  <p>MindMatch is an academic research project designed to help users explore emotional well-being through AI-assisted media recommendations.</p>
+                  <p>EARS is an academic project designed to help users explore emotional well-being through multi-agent media recommendations.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">1. Not a Medical Service</h3>
-                  <p>MindMatch does not provide diagnosis, treatment, or professional mental health advice. All recommendations are for informational and general wellness purposes only. If you are in crisis, please contact a qualified professional.</p>
+                  <p>EARS does not provide diagnosis, treatment, or professional mental health advice. All recommendations are for informational and general wellness purposes only. If you are in crisis, please contact a qualified professional.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">2. No Professional Substitute</h3>
-                  <p>This tool is a supportive companion, not a replacement for professional mental health care. Recommendations are AI-generated and may not always be perfectly suited to your situation.</p>
+                  <p>This tool is a supportive companion, not a replacement for professional mental health care. Recommendations may not always be perfectly suited to your situation.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">3. Academic Use</h3>
                   <p>This project is developed for academic purposes. It is not a commercial product and does not charge for services or collect revenue of any kind.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">4. User Responsibility</h3>
@@ -99,10 +99,10 @@ export default function LoginPage() {
                   <p className="font-semibold text-[#191c1e]">Last updated: 2026</p>
                   <div className="bg-[#e1e0ff] rounded-xl p-4 flex gap-3 items-start">
                     <span className="material-symbols-outlined text-[#4648d4] shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
-                    <p className="text-[#2f2ebe] font-semibold">MindMatch does not collect, store, or share any personally identifiable information.</p>
+                    <p className="text-[#2f2ebe] font-semibold">EARS does not collect, store, or share any personally identifiable information.</p>
                   </div>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">What we store</h3>
-                  <p>Only a randomly generated session ID, your stated content preferences (music genres, video topics), and anonymised emotion logs. None of this is linked to your real identity in any way.</p>
+                  <p>Only a randomly generated session ID, your stated content preferences (music genres, video topics) and anonymised emotion logs. None of this is linked to your real identity in any way.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">What we do NOT store</h3>
                   <p>We do not store your name, email address, location, device identifiers, IP address, or any other personally identifiable data. Your username exists only in your browser's local storage and is never transmitted to our servers.</p>
                   <h3 className="font-bold text-[#191c1e] text-base mt-4">Data location</h3>
@@ -129,13 +129,13 @@ export default function LoginPage() {
             <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#4648d4] to-[#6063ee] flex items-center justify-center text-white shadow-lg">
               <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>spa</span>
             </div>
-            <span className="text-3xl font-headline font-extrabold tracking-tighter text-[#2f2ebe]">MindMatch</span>
+            <span className="text-3xl font-headline font-extrabold  text-[#2f2ebe]">EARS</span>
           </div>
           <h1 className="text-5xl font-headline font-bold text-[#191c1e] leading-tight tracking-tight">
             Your journey to <span className="text-[#4648d4]">inner clarity</span> begins here.
           </h1>
           <p className="text-lg text-[#464554] leading-relaxed">
-            An emotion-aware AI designed to support your well-being with personalised, privacy-first insights.
+            An emotion-aware agentic system designed to support your well-being with personalised, privacy-first insights.
           </p>
           <div className="flex items-center gap-3 bg-[#e1e0ff]/50 rounded-xl p-4">
             <span className="material-symbols-outlined text-[#4648d4]" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
@@ -247,7 +247,7 @@ export default function LoginPage() {
 
       <footer className="w-full bg-[#f7f9fb] border-t border-[#c7c4d7]/15 mt-auto">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-7xl mx-auto">
-          <p className="text-sm tracking-wide text-[#191c1e]/60 mb-4 md:mb-0">© 2024 MindMatch Digital Sanctuary</p>
+          <p className="text-sm tracking-wide text-[#191c1e]/60 mb-4 md:mb-0">© 2024 EARS Digital Sanctuary</p>
           <div className="flex space-x-8">
             <button onClick={() => setModal('privacy')} className="text-sm tracking-wide text-[#191c1e]/60 hover:text-[#4648d4] transition-colors">Privacy</button>
             <button onClick={() => setModal('terms')} className="text-sm tracking-wide text-[#191c1e]/60 hover:text-[#4648d4] transition-colors">Terms</button>
