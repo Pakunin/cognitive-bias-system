@@ -247,7 +247,7 @@ export default function LoginPage() {
 
       <footer className="w-full bg-[#f7f9fb] border-t border-[#c7c4d7]/15 mt-auto">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-7xl mx-auto">
-          <p className="text-sm tracking-wide text-[#191c1e]/60 mb-4 md:mb-0">© 2024 EARS Digital Sanctuary</p>
+          <p className="text-sm tracking-wide text-[#191c1e]/60 mb-4 md:mb-0">© 2026 Emotion Aware Recommendation System</p>
           <div className="flex space-x-8">
             <button onClick={() => setModal('privacy')} className="text-sm tracking-wide text-[#191c1e]/60 hover:text-[#4648d4] transition-colors">Privacy</button>
             <button onClick={() => setModal('terms')} className="text-sm tracking-wide text-[#191c1e]/60 hover:text-[#4648d4] transition-colors">Terms</button>
