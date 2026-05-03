@@ -12,7 +12,7 @@ export default function TopNav({ activeLink }: TopNavProps) {
     <nav className="sticky top-0 z-50 shadow-[0_8px_24px_rgba(70,72,212,0.06)] glass-nav" style={{ background: 'rgba(247,249,251,0.7)' }}>
       <div className="flex justify-between items-center w-full px-12 py-4 max-w-7xl mx-auto">
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-2xl font-bold tracking-tighter text-[#2f2ebe] font-headline">MindMatch</Link>
+          <Link href="/" className="text-2xl font-bold tracking-tighter text-[#2f2ebe] font-headline">EARS</Link>
           <div className="hidden md:flex gap-6 items-center font-headline tracking-tight">
             <Link href="/dashboard" className={activeLink === 'dashboard' ? 'text-[#4648d4] font-bold border-b-2 border-[#4648d4] pb-1' : 'text-[#191c1e] opacity-70 hover:opacity-100 transition-opacity'}>Dashboard</Link>
             <Link href="/history" className={activeLink === 'history' ? 'text-[#4648d4] font-bold border-b-2 border-[#4648d4] pb-1' : 'text-[#191c1e] opacity-70 hover:opacity-100 transition-opacity'}>History</Link>
