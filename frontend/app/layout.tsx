@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MindMatch - Digital Sanctuary",
+  title: "EARS",
   description: "Emotion-aware intelligence for your mental well-being",
 };
 
