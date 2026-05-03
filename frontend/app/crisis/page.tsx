@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 const hotlines = [
   { bg: '#e1e0ff', color: '#4648d4', badge: 'Crisis Hotline', badgeColor: '#4648d4', name: 'iCall', hours: 'Mon-Sat, 8am-10pm', hoursIcon: 'schedule', phone: '9152987821', displayPhone: '9152987821' },
-  { bg: '#e1e0ff', color: '#575992', badge: 'Emotional Support', badgeColor: '#575992', name: 'Vandrevala Foundation', hours: 'Available 24/7', hoursIcon: 'history', phone: '18602662345', displayPhone: '1860-2662-345' },
-  { bg: '#ffdcc5', color: '#904900', badge: 'Suicide Prevention', badgeColor: '#904900', name: 'AASRA', hours: 'Available 24/7', hoursIcon: 'verified', phone: '9820466627', displayPhone: '9820466627' },
+  { bg: '#e1e0ff', color: '#575992', badge: 'Emotional Support', badgeColor: '#575992', name: 'Vandrevala Foundation', hours: 'Available 24/7', hoursIcon: 'history', phone: '9999666555', displayPhone: '9999-666-555' },
+  { bg: '#ffdcc5', color: '#904900', badge: 'Suicide Prevention', badgeColor: '#904900', name: 'AASRA', hours: 'Available 24/7', hoursIcon: 'verified', phone: '27546667', displayPhone: '022-27546667' },
 ];
 
 export default function CrisisPage() {
@@ -45,7 +45,7 @@ export default function CrisisPage() {
                   </p>
                   <div className="text-3xl font-headline font-extrabold text-[#2f2ebe] mb-8 tracking-tighter">{displayPhone}</div>
                 </div>
-                <a href={`tel:${phone}`} className="w-full flex items-center justify-center gap-2 bg-gradient-to-br from-[#4648d4] to-[#6063ee] text-white py-4 rounded-xl font-bold transition-all hover:shadow-lg active:scale-95">
+                <a href={`tel:${phone}`} className="w-full flex items-center justify-center gap-2 bg-linear-to-br from-[#4648d4] to-[#6063ee] text-white py-4 rounded-xl font-bold transition-all hover:shadow-lg active:scale-95">
                   <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>call</span>
                   Call Now
                 </a>
@@ -67,8 +67,8 @@ export default function CrisisPage() {
 
         <footer className="mt-24 w-full max-w-4xl border-t border-[#c7c4d7]/15 pt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-[#464554]/60">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#2f2ebe]">MindMatch</span>
-            <span>© 2024 MindMatch Digital Sanctuary</span>
+            <span className="font-bold text-[#2f2ebe]">EARS</span>
+            <span>© 2026 Emotion Aware Recommendation System</span>
           </div>
           <div className="flex gap-6">
             {['Privacy', 'Terms', 'Help'].map(l => (
