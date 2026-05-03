@@ -88,7 +88,7 @@ export default function ResultsPage() {
             <div className="bg-white p-6 rounded-2xl shadow-[0_8px_24px_rgba(70,72,212,0.06)] border border-[#c7c4d7]/15 flex flex-col gap-3 min-w-70">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-[#464554] uppercase tracking-wider">Analysis Result</span>
-                <span className="text-xs font-bold text-[#4648d4] px-2 py-1 bg-[#e1e0ff] rounded-full">
+                <span className="text-xs font-bold text-[#4648d4] ml-2 px-2 py-1 bg-[#e1e0ff] rounded-full">
                   {Math.round(result.confidence * 100)}% confidence
                 </span>
               </div>
